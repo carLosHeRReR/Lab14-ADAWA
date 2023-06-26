@@ -91,37 +91,37 @@ const Vuelo = mongoose.model('Vuelo', VueloSchema);
 
 async function createFlight() {
   const pilot = new Pilot({
-    code: 'P001',
-    name: 'John Doe',
-    flightHours: 500
+    code: 'P1',
+    name: 'Carlos Herrera',
+    flightHours: 30
   });
 
   await pilot.save();
 
   const crewMember1 = new Tripulacion({
-    code: 'C001',
-    name: 'Jane Smith'
+    code: 'T1',
+    name: 'Aldair Acosta'
   });
 
   const crewMember2 = new Tripulacion({
-    code: 'C002',
-    name: 'Michael Johnson'
+    code: 'T2',
+    name: 'Eduardo Villanueva'
   });
 
   await Promise.all([crewMember1.save(), crewMember2.save()]);
 
   const aircraft = new Avion({
-    code: 'A001',
-    type: 'BOEING-747',
+    code: 'A1',
+    type: 'AIRBUS A300',
     mantenimiento: new Date()
   });
 
   await aircraft.save();
 
   const flight = new Vuelo({
-    flightNumber: 'IB-8830',
-    origin: 'Palma',
-    destination: 'Alicante',
+    flightNumber: 'V-2030',
+    origin: 'Lima',
+    destination: 'Buenos Aires',
     time: new Date(),
     avion: aircraft._id,
     piloto: pilot._id,
